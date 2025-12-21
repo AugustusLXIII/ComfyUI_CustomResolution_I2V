@@ -1,4 +1,4 @@
-<img width="504" height="568" alt="image" src="https://github.com/user-attachments/assets/d58796f2-02b8-4c53-9d56-18e071c50074" />
+<img width="885" height="842" alt="image" src="https://github.com/user-attachments/assets/37610a6c-a036-4db2-ba0c-ed604e90a125" />
 
 ComfyUI Custom Resolution I2V
 A specialized resolution utility node for WanVideo Image-to-Video (I2V) workflows. This node provides standard resolution presets while offering a manual override system with automatic rounding.
