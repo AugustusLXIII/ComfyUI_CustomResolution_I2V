@@ -23,7 +23,7 @@ Open a terminal in your ComfyUI/custom_nodes/ folder.
 
 Run the following command:
 
-git clone https://github.com/YourGitHubUsername/ComfyUI_CustomResolution_I2V.git
+git clone https://github.com/AugustusLXIII/ComfyUI_CustomResolution_I2V.git
 
 Restart ComfyUI.
 
