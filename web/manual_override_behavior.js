@@ -1,7 +1,7 @@
 import { app } from "../../../scripts/app.js";
 
 app.registerExtension({
-    name: "WanVideo.ManualOverride",
+    name: "WanVideo.CustomResolutionLogic",
     async beforeRegisterNodeDef(nodeType, nodeData, app) {
         if (nodeData.name === "CustomResolutionI2V") {
             const onNodeCreated = nodeType.prototype.onNodeCreated;
@@ -12,18 +12,29 @@ app.registerExtension({
                 const widthWidget = this.widgets.find(w => w.name === "manual_width");
                 const heightWidget = this.widgets.find(w => w.name === "manual_height");
 
-                const updateWidgets = () => {
-                    const disabled = !overrideWidget.value;
-                    widthWidget.disabled = disabled;
-                    heightWidget.disabled = disabled;
-                    // Adjust opacity to "grey out"
-                    widthWidget.inputEl.style.opacity = disabled ? "0.5" : "1.0";
-                    heightWidget.inputEl.style.opacity = disabled ? "0.5" : "1.0";
+                const updateManualVisibility = () => {
+                    const manualEnabled = !!overrideWidget?.value;
+                    
+                    if (widthWidget) widthWidget.disabled = !manualEnabled;
+                    if (heightWidget) heightWidget.disabled = !manualEnabled;
+                    
+                    // Visual feedback: reduce opacity for disabled widgets if inputEl exists
+                    if (widthWidget?.inputEl?.style) {
+                        widthWidget.inputEl.style.opacity = manualEnabled ? "1.0" : "0.5";
+                    }
+                    if (heightWidget?.inputEl?.style) {
+                        heightWidget.inputEl.style.opacity = manualEnabled ? "1.0" : "0.5";
+                    }
                 };
 
-                overrideWidget.callback = updateWidgets;
-                // Run once on init
-                setTimeout(updateWidgets, 10);
+                if (overrideWidget) {
+                    overrideWidget.callback = updateManualVisibility;
+                }
+
+                // Delay slightly to ensure widgets and their elements are fully initialized
+                setTimeout(() => {
+                    updateManualVisibility();
+                }, 100);
             };
         }
     }
