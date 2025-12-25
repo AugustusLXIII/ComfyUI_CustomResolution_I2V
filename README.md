@@ -1,3 +1,5 @@
+<img width="813" height="612" alt="image" src="https://github.com/user-attachments/assets/f5f1d4d2-de37-440c-bf14-39a7a5da8061" />
+
 # ComfyUI Custom Resolution I2V (v1.1)
 
 A specialized resolution utility node for **WanVideo Image-to-Video (I2V)** workflows. This node provides standard resolution presets while offering a manual override system with automatic compatibility rounding.
